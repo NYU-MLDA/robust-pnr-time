@@ -1,0 +1,35 @@
+ 
+****************************************
+check_design summary:
+Version:     O-2018.06-SP5-1
+Date:        Thu Feb 18 15:00:48 2021
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                     17
+    Unconnected ports (LINT-28)                                    17
+
+Cells                                                               1
+    Cells do not drive (LINT-1)                                     1
+--------------------------------------------------------------------------------
+
+Warning: In design 'des3', cell 'C571' does not drive any nets. (LINT-1)
+Warning: In design 'key_sel3', port 'clk' is not connected to any nets. (LINT-28)
+Warning: In design 'sbox1', port 'reset' is not connected to any nets. (LINT-28)
+Warning: In design 'sbox1', port 'clk' is not connected to any nets. (LINT-28)
+Warning: In design 'sbox2', port 'reset' is not connected to any nets. (LINT-28)
+Warning: In design 'sbox2', port 'clk' is not connected to any nets. (LINT-28)
+Warning: In design 'sbox3', port 'reset' is not connected to any nets. (LINT-28)
+Warning: In design 'sbox3', port 'clk' is not connected to any nets. (LINT-28)
+Warning: In design 'sbox4', port 'reset' is not connected to any nets. (LINT-28)
+Warning: In design 'sbox4', port 'clk' is not connected to any nets. (LINT-28)
+Warning: In design 'sbox5', port 'reset' is not connected to any nets. (LINT-28)
+Warning: In design 'sbox5', port 'clk' is not connected to any nets. (LINT-28)
+Warning: In design 'sbox6', port 'reset' is not connected to any nets. (LINT-28)
+Warning: In design 'sbox6', port 'clk' is not connected to any nets. (LINT-28)
+Warning: In design 'sbox7', port 'reset' is not connected to any nets. (LINT-28)
+Warning: In design 'sbox7', port 'clk' is not connected to any nets. (LINT-28)
+Warning: In design 'sbox8', port 'reset' is not connected to any nets. (LINT-28)
+Warning: In design 'sbox8', port 'clk' is not connected to any nets. (LINT-28)
+1
