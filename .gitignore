@@ -1,4 +1,4 @@
-**/DC
+**/DC/out
 # Prerequisites
 *.d
 
@@ -18,7 +18,6 @@
 *.pch
 
 # Libraries
-*.lib
 *.a
 *.la
 *.lo
