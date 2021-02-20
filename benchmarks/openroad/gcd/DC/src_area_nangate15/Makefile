@@ -1,1 +1,1 @@
-include ../../../../common/Makefile.dc_shell.common
+include ../../../../common/Makefile.common

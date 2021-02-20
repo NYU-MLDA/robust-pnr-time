@@ -9,6 +9,6 @@ set CLK_UNC_SETUP 20
 set CLK_UNC_HOLD  1
 
 # Platform
-source ../../../../common/platforms/nangate15nm.tcl
+source ../../../../common/platforms/nangate45nm.tcl
 
 
