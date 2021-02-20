@@ -1,0 +1,8 @@
+synthesis: 
+	dc_shell -f ../../../../common/scripts/dc_synthesis.tcl
+pnr: 
+	innovus -64 -files ../../../common/scripts/innovus_pnr.tcl
+timing:
+	pt_shell -file ../../../common/scripts/pt_timing.tcl
+clean:
+	rm -rf out *.log* *.cmd*
