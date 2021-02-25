@@ -1,0 +1,25 @@
+ 
+****************************************
+check_design summary:
+Version:     O-2018.06-SP5-1
+Date:        Wed Feb 24 19:07:59 2021
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                     11
+    Unconnected ports (LINT-28)                                    11
+--------------------------------------------------------------------------------
+
+Warning: In design 'RegEn_0x68db79c4ec1d6e5b', port 'reset[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'LtComparator_0x422b1f52edd46a85', port 'clk[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'LtComparator_0x422b1f52edd46a85', port 'reset[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'ZeroComparator_0x422b1f52edd46a85', port 'clk[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'ZeroComparator_0x422b1f52edd46a85', port 'reset[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'Mux_0x683fa1a418b072c9', port 'clk[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'Mux_0x683fa1a418b072c9', port 'reset[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'Mux_0xdd6473406d1a99a', port 'clk[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'Mux_0xdd6473406d1a99a', port 'reset[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'Subtractor_0x422b1f52edd46a85', port 'clk[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'Subtractor_0x422b1f52edd46a85', port 'reset[0]' is not connected to any nets. (LINT-28)
+1

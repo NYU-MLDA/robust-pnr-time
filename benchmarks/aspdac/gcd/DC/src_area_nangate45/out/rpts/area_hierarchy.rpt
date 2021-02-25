@@ -1,0 +1,43 @@
+ 
+****************************************
+Report : area
+Design : gcd
+Version: O-2018.06-SP5-1
+Date   : Wed Feb 24 19:08:14 2021
+****************************************
+
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /home/abc586/freepdk-45nm/stdcells.db)
+
+Number of ports:                           54
+Number of nets:                           570
+Number of cells:                          499
+Number of combinational cells:            465
+Number of sequential cells:                34
+Number of macros/black boxes:               0
+Number of buf/inv:                        248
+Number of references:                      23
+
+Combinational area:                402.192000
+Buf/Inv area:                      147.630000
+Noncombinational area:             153.747994
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:                   555.939995
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area          Local cell area
+                                  ------------------  --------------------------- 
+Hierarchical cell                 Absolute   Percent  Combi-    Noncombi-  Black-
+                                  Total      Total    national  national   boxes   Design
+--------------------------------  ---------  -------  --------  ---------  ------  ---------
+gcd                                555.9400    100.0  402.1920   153.7480  0.0000  gcd
+--------------------------------  ---------  -------  --------  ---------  ------  ---------
+Total                                                 402.1920   153.7480  0.0000
+
+1
