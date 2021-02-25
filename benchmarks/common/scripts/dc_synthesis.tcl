@@ -120,4 +120,5 @@ change_names -rules verilog -hier
 write -format verilog -hierarchy -output ${RESULTS_DIR}/${TOP_DESIGN}_mapped.v
 write -hierarchy -format ddc -output ${RESULTS_DIR}/${TOP_DESIGN}.final.ddc
 write_sdc ${RESULTS_DIR}/${TOP_DESIGN}.final.sdc
+#all_high_fanout -net -threshold 2
 exit
