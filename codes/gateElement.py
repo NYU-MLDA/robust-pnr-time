@@ -3,25 +3,27 @@ class gateBlock:
     def __init__(self):
         self.gateName = None
         self.gateType = None
-        self.fanoutLoad = 0
+        self.fanout = 0
         self.fanoutName = None
         self.gateDelay = 0
+        self.gateLoad = 0.0
         self.targetCycleTime = 0
 
-    def setGateParams(self,name,type,delay):
+    def setGateParams(self,name,type,delay,load):
         self.gateName = name
         self.gateType = type
         self.gateDelay = delay
+        self.gateLoad = load
 
-    def setFanoutChar(self,name,load):
-        self.fanoutLoad = load
+    def setFanoutChar(self,name,fanout):
+        self.fanout = fanout
         self.fanoutName = name
 
     def setTargetCycleTime(self,ct):
         self.targetCycleTime = ct
 
     def getFeature(self):
-        return [self.targetCycleTime,self.fanoutName,self.fanoutLoad]
+        return [self.targetCycleTime,self.gateType,self.gateLoad]
 
 class pathSegment:
 
@@ -56,3 +58,6 @@ class pathSegment:
 
     def getEndPoint(self):
         return self.endPoint
+
+    def getGateList(self):
+        return self.gateList
