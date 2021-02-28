@@ -1,10 +1,10 @@
 dc: 
 	dc_shell -f ../../../../common/scripts/dc_synthesis.tcl
 genus:
-	genus -files  ../../../common/scripts/genus_synthesis.tcl
+	genus -files  ../../../../common/scripts/genus_synthesis.tcl
 pnr: 
-	innovus -64 -files ../../../common/scripts/innovus_pnr.tcl
+	innovus -64 -files ../../../../common/scripts/innovus_pnr.tcl
 timing:
-	pt_shell -file ../../../common/scripts/pt_timing.tcl
+	pt_shell -file ../../../../common/scripts/pt_timing.tcl
 clean:
-	rm -rf out *.log* *.cmd*
+	rm -rf out *.log* *.cmd* timingReports/

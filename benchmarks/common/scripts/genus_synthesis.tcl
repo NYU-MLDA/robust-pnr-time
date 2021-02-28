@@ -43,14 +43,16 @@ set_db script_search_path $search_path
 set_db target_library /home/abc586/freepdk-45nm/stdcells.lib
 set_db link_library /home/abc586/freepdk-45nm/stdcells.lib
 
-set_db init_hdl_search_path $design
-set_db hdl_search_path $design
-set tmp_var [glob $design/*.v]
-set rtl_files ""
-foreach tmp $tmp_var {lappend rtl_files [file tail $tmp]}
-read_hdl $rtl_files
+#set_db init_hdl_search_path $design
+#set_db hdl_search_path $design
+#set tmp_var [glob $design/*.v]
+#set rtl_files ""
+#foreach tmp $tmp_var {lappend rtl_files [file tail $tmp]}
+#read_hdl $rtl_files
+read_hdl -f ${DESIGN}
+elaborate ${TOP_DESIGN}
 
-elaborate
+current_design ${TOP_DESIGN}
 
 #create_clock -name VCLK -period "${myPeriod}" [get_ports $clk]
 create_clock -period "${myPeriod}" [get_ports $clk]
