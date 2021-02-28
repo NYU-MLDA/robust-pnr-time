@@ -13,7 +13,8 @@ file mkdir ${RESULTS_DIR}
 file mkdir ${GDS_DIR}
 
 
-set init_verilog "../DC/src_area_nangate45/out/results/${TOP_DESIGN}_mapped.v"
+#set init_verilog "../DC/src_area_nangate45/out/results/${TOP_DESIGN}_mapped.v"
+set init_verilog "../GENUS/out/results/${TOP_DESIGN}_synthesized.v"
 set init_top_cell "${TOP_DESIGN}"
 set init_lef_file "$env(HOME)/freepdk-45nm/rtk-tech.lef $env(HOME)/freepdk-45nm/stdcells.lef"
 set init_gnd_net "VSS"

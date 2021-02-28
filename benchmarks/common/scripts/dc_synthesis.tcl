@@ -91,7 +91,8 @@ set_host_options -max_cores 8
 #compile_ultra -gate_clock
 compile_ultra
 
-optimize_netlist -area
+#optimize_netlist -area
+#optimize_netlist
 
 report_qor > ${REPORTS_DIR}/${TOP_DESIGN}_qor.rpt
 
