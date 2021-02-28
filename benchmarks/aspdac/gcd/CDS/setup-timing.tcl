@@ -6,7 +6,7 @@ create_library_set -name libs_typical -timing [list "$env(HOME)/freepdk-45nm/std
 
 create_delay_corner -name delay_default -early_library_set libs_typical -late_library_set libs_typical -rc_corner typical
 
-create_constraint_mode -name constraints_default -sdc_files [list ../DC/src_area_nangate45/out/results/${TOP_DESIGN}.final.sdc]
+create_constraint_mode -name constraints_default -sdc_files [list ../GENUS/out/results/${TOP_DESIGN}.final.sdc]
 
 create_analysis_view -name analysis_default -constraint_mode constraints_default -delay_corner delay_default
 
