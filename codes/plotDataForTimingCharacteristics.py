@@ -4,14 +4,14 @@ import pandas as pd
 prePnRCSVFile = pd.read_csv(sys.argv[1])
 postPnRCSVFile = pd.read_csv(sys.argv[2])
 
-prePnRCSVFile['startPoint'] = prePnRCSVFile['startPoint'].apply(lambda x: x.replace("_clk","_Q"))
-prePnRCSVFile['startPoint'] = prePnRCSVFile['startPoint'].apply(lambda x: x.replace("_",""))
-prePnRCSVFile['endPoint'] = prePnRCSVFile['endPoint'].apply(lambda x: x.replace("_d","_D"))
-prePnRCSVFile['endPoint'] = prePnRCSVFile['endPoint'].apply(lambda x: x.replace("_",""))
+#prePnRCSVFile['startPoint'] = prePnRCSVFile['startPoint'].apply(lambda x: x.replace("_clk","_Q"))
+#prePnRCSVFile['startPoint'] = prePnRCSVFile['startPoint'].apply(lambda x: x.replace("_",""))
+#prePnRCSVFile['endPoint'] = prePnRCSVFile['endPoint'].apply(lambda x: x.replace("__d","_D"))
+#prePnRCSVFile['endPoint'] = prePnRCSVFile['endPoint'].apply(lambda x: x.replace("_",""))
 
 
-postPnRCSVFile['startPoint'] = postPnRCSVFile['startPoint'].apply(lambda x: x.replace("_",""))
-postPnRCSVFile['endPoint'] = postPnRCSVFile['endPoint'].apply(lambda x: x.replace("_",""))
+#postPnRCSVFile['startPoint'] = postPnRCSVFile['startPoint'].apply(lambda x: x.replace("_",""))
+#postPnRCSVFile['endPoint'] = postPnRCSVFile['endPoint'].apply(lambda x: x.replace("_",""))
 
 
 prePnRCSVFile = prePnRCSVFile.rename(columns={'pathLength': 'prePnRLen', 'pathIdx': 'pidPrePnR'})
@@ -27,6 +27,8 @@ commonKeys = set(prePnRCSVFile['pkey']) & set(postPnRCSVFile['pkey'])
 prePnRCSVFile_common = prePnRCSVFile[prePnRCSVFile['pkey'].isin(commonKeys)]
 postPnRCSVFile_common = postPnRCSVFile[postPnRCSVFile['pkey'].isin(commonKeys)]
 
+print(prePnRCSVFile)
+print(postPnRCSVFile)
 print(prePnRCSVFile_common)
 print(postPnRCSVFile_common)
 final = prePnRCSVFile_common.merge(postPnRCSVFile_common, on="pkey", how = 'inner')

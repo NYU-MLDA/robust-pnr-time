@@ -40,6 +40,13 @@ def parseArguments():
         timing_report = args.timing_report
         output_csv = args.output_file
 
+def processStartAndEndpoint(startPoint,endPoint):
+    sPoint = startPoint
+    if(startPoint.endswith('Q')):
+        sPoint = startPoint[:-1]+'clk'
+    elif(startPoint.endswith('QN')):
+        sPoint = startPoint[:-2]+'clk'
+    return sPoint,endPoint
 
 def parseFileLines(filelineContents):
     idx = 0
@@ -59,8 +66,8 @@ def parseFileLines(filelineContents):
             idx+=1
             secondLine = filelineContents[idx]
             pathDelay = 0
-            tempPS.setStartAndEndpoint(startPoint,endPoint)
-            #print(startPoint,endPoint)
+            sPoint, ePoint = processStartAndEndpoint(startPoint, endPoint)
+            tempPS.setStartAndEndpoint(sPoint, ePoint)
             while(not secondLine.__contains__("+--------------")):
                 parseList = "".join(firstLine.strip("\r\n").split()).split("|")
                 #print(parseList)

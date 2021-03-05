@@ -40,6 +40,17 @@ def parseArguments():
         timing_report = args.timing_report
         output_csv = args.output_file
 
+def processStartAndEndpoint(startPoint,endPoint):
+    #Trim starting '_'
+    sPoint = startPoint[1:]
+    ePoint = endPoint[1:]
+    if(ePoint.endswith('d')):
+        ePoint = ePoint[:-1]+'D'
+    elif(endPoint.endswith('sena')):
+        ePoint = ePoint[:-4] + 'SE'
+    return sPoint,ePoint
+
+
 
 def parseFileLines(filelineContents):
     idx = 0
@@ -60,7 +71,8 @@ def parseFileLines(filelineContents):
             idx+=1
             secondLine = filelineContents[idx]
             pathDelay = 0
-            tempPS.setStartAndEndpoint(startPoint,endPoint)
+            sPoint,ePoint = processStartAndEndpoint(startPoint,endPoint)
+            tempPS.setStartAndEndpoint(sPoint,ePoint)
             while(not secondLine.__contains__("#--------------")):
                 #### Logic for new path
                 ### paramList[0] contains name, Param[1] contains gate type, param[2] contains Fanout, param[3] - Trans
