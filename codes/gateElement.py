@@ -1,3 +1,14 @@
+gateLoadDictionary =  {
+    "unmapped_d_flop" : 5.0,
+    "unmapped_complex2" : 4.0,
+    "unmapped_or2" : 3.0,
+    "unmapped_and2" : 3.0,
+    "unmapped_nor2" : 2.0,
+    "unmapped_nand2" : 2.0,
+    "unmapped_not" : 1.0
+}
+
+
 class gateBlock:
 
     def __init__(self):
@@ -7,6 +18,7 @@ class gateBlock:
         self.fanoutName = None
         self.gateDelay = 0
         self.gateLoad = 0.0
+        self.gateID = 0.0
         self.targetCycleTime = 0
 
     def setGateParams(self,name,type,delay,load):
@@ -14,6 +26,8 @@ class gateBlock:
         self.gateType = type
         self.gateDelay = delay
         self.gateLoad = load
+        if(self.gateType in gateLoadDictionary.keys()):
+          self.gateID = gateLoadDictionary[self.gateType]
 
     def setFanoutChar(self,name,fanout):
         self.fanout = fanout
@@ -23,7 +37,7 @@ class gateBlock:
         self.targetCycleTime = ct
 
     def getFeature(self):
-        return [self.targetCycleTime,self.gateType,self.gateLoad]
+        return [self.targetCycleTime,self.gateID,self.gateLoad]
 
 class pathSegment:
 

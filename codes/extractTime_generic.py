@@ -10,6 +10,7 @@ timing_report = ""
 output_csv = ""
 pathInformation = []
 csvDelimiter = ","
+target_cycle_time = 0.0
 
 
 def showVersion():
@@ -18,12 +19,14 @@ def showVersion():
     sys.exit()
 
 def parseArguments():
-    global timing_report,output_csv
+    global timing_report,output_csv,target_cycle_time
     argparser = argparse.ArgumentParser(description="Feature Extraction (Pre PnR synthesis)")
     argparser.add_argument("-V", "--version", action="store_true", dest="showversion", default=False,
                            help="Show the version")
-    argparser.add_argument("-t", "--timing_report", action="store", dest="timing_report", default="",
+    argparser.add_argument("-t", "--timing_report", action="store", dest="timing_report", default="",required=True,
                            help="Specify the name of the netlist file to process")
+    argparser.add_argument("-d", "--target_cycle_time", action="store", dest="target_cycle_time", default="",required=True,
+                           help="Specify the target cycle time")
     argparser.add_argument("-o", "--output_file", action="store", dest="output_file", default="prePnR.csv",
                            help="Specify the name of the output csv file")
 
@@ -33,12 +36,24 @@ def parseArguments():
     if args.showversion:
         showVersion()
 
-    if (args.timing_report == None) or (args.output_file == None):
+    if (args.timing_report == None) or (args.output_file == None) or (args.target_cycle_time == None):
         print("Provide proper arguments")
         exit()
     else:
         timing_report = args.timing_report
         output_csv = args.output_file
+        target_cycle_time = args.target_cycle_time
+
+def processStartAndEndpoint(startPoint,endPoint):
+    #Trim starting '_'
+    sPoint = startPoint[1:]
+    ePoint = endPoint[1:]
+    if(ePoint.endswith('d')):
+        ePoint = ePoint[:-1]+'D'
+    elif(endPoint.endswith('sena')):
+        ePoint = ePoint[:-4] + 'SE'
+    return sPoint,ePoint
+
 
 
 def parseFileLines(filelineContents):
@@ -60,7 +75,8 @@ def parseFileLines(filelineContents):
             idx+=1
             secondLine = filelineContents[idx]
             pathDelay = 0
-            tempPS.setStartAndEndpoint(startPoint,endPoint)
+            sPoint,ePoint = processStartAndEndpoint(startPoint,endPoint)
+            tempPS.setStartAndEndpoint(sPoint,ePoint)
             while(not secondLine.__contains__("#--------------")):
                 #### Logic for new path
                 ### paramList[0] contains name, Param[1] contains gate type, param[2] contains Fanout, param[3] - Trans
@@ -79,6 +95,7 @@ def parseFileLines(filelineContents):
                 gateObj = gateBlock()
                 gateObj.setGateParams(gateName, gateType, float(gateDelay),gateLoad)
                 gateObj.setFanoutChar(gateName, fanout)
+                gateObj.setTargetCycleTime(target_cycle_time)
                 pathDelay += float(gateDelay)
                 tempPS.addGateObj(gateObj)
                 idx+=1
@@ -91,8 +108,10 @@ def parseFileLines(filelineContents):
 def reportInfo():
     idx=1
     writeFile = open(output_csv,"w")
+    writeInputFeatureFile = open("inputFeatureFile.csv","w")
     writeFile.write("pathIdx,startPoint,endPoint,genericPD,pathLength")
     for path in pathInformation:
+
         #print("\n\nPath info:"+str(idx)+"\n")
         #print(path.getStartPoint())
         #print(path.getEndPoint())
@@ -103,9 +122,12 @@ def reportInfo():
         writeFile.write(path.getEndPoint()+csvDelimiter)
         writeFile.write(str(path.getPathDelay())+csvDelimiter)
         writeFile.write(str(path.getPathLength()))
-        #pathInfo = path.getGateList()
-        #for gate in pathInfo:
-        #    print(gate.getFeature())
+        writeInputFeatureFile.write(str(idx))
+        pathInfo = path.getGateList()
+        for gate in pathInfo:
+            designTCTime,gateID,gateLoad = gate.getFeature()
+            writeInputFeatureFile.write(csvDelimiter+str(designTCTime)+csvDelimiter+str(gateID)+csvDelimiter+str(gateLoad))
+        writeInputFeatureFile.write("\n")
         idx+=1
     writeFile.close()
 
@@ -116,12 +138,10 @@ def fileContent():
     f.close()
     parseFileLines(fileLines)
 
-
 def main():
     parseArguments()
     fileContent()
     reportInfo()
-
 
 if __name__ == '__main__':
     main()
