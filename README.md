@@ -9,3 +9,9 @@
 4) "GENUS" and "DC" will have a config.tcl, file_list.f and a Makefile. The Makefile is linked to the common Makefile.common in scripts directory.
 
 5) "file_list.f" contains the list of source files in the "src" folder. config.tcl have the necessary environment variables.
+
+6) Copy the freepdk-45nm folder to your $HOME directory.
+
+7) Run commands:
+   Synthesis: Go the GENUS folder, type "make genus"
+   Placement and rounting: Go to CDS folder, type "make pnr".
