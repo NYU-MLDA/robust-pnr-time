@@ -3,7 +3,7 @@ dc:
 genus:
 	genus -files  ../../../../common/scripts/genus_synthesis.tcl
 pnr: 
-	innovus -64 -files ../../../../common/scripts/innovus_pnr.tcl
+	innovus -64 -files ../../../../common/scripts/innovus_pnr_jg.tcl
 timing:
 	pt_shell -file ../../../../common/scripts/pt_timing.tcl
 clean:

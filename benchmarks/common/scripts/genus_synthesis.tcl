@@ -74,6 +74,17 @@ set output_ports [all_outputs]
 check_design
 syn_gen
 report_timing -max_paths 150000 > ${RESULTS_DIR}/${TOP_DESIGN}_generic_timing.rpt
+
+
+#jg6467 changes start
+set paths [report_timing -from [all_registers] -to [all_registers] -logic_levels 1000 -logic_levels_tcl_list -max_paths 10000]
+
+set fl [open syn_gen_paths.csv w]
+foreach path $paths {puts $fl "[lindex $path 0], [lindex $path 1], [lindex $path 2]"}
+report_timing -from [all_registers] -to [all_registers] -path_type summary -max_paths 10000 > syn_gen_summary.txt
+close $fl
+#jg6467 changes end
+
 syn_map
 syn_opt
 report_timing -max_paths 150000 > ${RESULTS_DIR}/${TOP_DESIGN}_techmap_timing.rpt
