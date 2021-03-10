@@ -12,6 +12,6 @@
 
 6) Copy the freepdk-45nm folder to your $HOME directory.
 
-7) Run commands:
-   Synthesis: Go the GENUS folder, type "make genus"
+7) Run commands:\n
+   Synthesis: Go the GENUS folder, type "make genus"\n
    Placement and rounting: Go to CDS folder, type "make pnr".
