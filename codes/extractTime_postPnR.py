@@ -53,41 +53,58 @@ def parseFileLines(filelineContents):
     numLines = len(filelineContents)
     while(idx < numLines):
         line = filelineContents[idx]
-        if(line.__contains__("Beginpoint:")):
+        #if(line.__contains__("Beginpoint:")):
+        if (line.__contains__("Startpoint:")):
             tempPS = pathSegment()
             line = line.strip("\r\n").split()
-            startPoint = re.sub("[^A-Za-z0-9_]", "_",line[1])
+            #print(line)
+            startPoint = line[2]
+            #startPoint = re.sub("[^A-Za-z0-9_]", "_",line[1])
         elif(line.__contains__("Endpoint:")):
             line = line.strip("\r\n").split()
-            endPoint = re.sub("[^A-Za-z0-9_]", "_",line[1])
-        elif(line.__contains__("= Beginpoint Arrival Time")):
-            idx+=6 # Length 3 buffer, no good inputs.
+            #print(line)
+            endPoint = line[2]
+            #endPoint = re.sub("[^A-Za-z0-9_]", "_",line[1])
+        #elif(line.__contains__("= Beginpoint Arrival Time")):
+        elif(line.__contains__("Timing Point")):
+            #idx+=6 # Length 3 buffer, no good inputs.
+            idx += 4  # Length 3 buffer, no good inputs.
             firstLine = filelineContents[idx]
             idx+=1
             secondLine = filelineContents[idx]
             pathDelay = 0
             sPoint, ePoint = processStartAndEndpoint(startPoint, endPoint)
             tempPS.setStartAndEndpoint(sPoint, ePoint)
-            while(not secondLine.__contains__("+--------------")):
-                parseList = "".join(firstLine.strip("\r\n").split()).split("|")
+            #while(not secondLine.__contains__("+--------------")):
+            while(not secondLine.__contains__("#--------------")):
+                #parseList = "".join(firstLine.strip("\r\n").split()).split("|")
+                parseList = firstLine.strip("\r\n").split()
                 #print(parseList)
 
-                gateName = parseList[1]
-                gateType = parseList[3]
-                #fanout = parseList[5]
-                gateLoad = 0
-                gateDelay = parseList[4]
+                #gateName = parseList[1]
+                #gateType = parseList[3]
+                ##fanout = parseList[5]
+                #gateLoad = 0
+                #gateDelay = parseList[4]
                 #print(gateLoad)
-
+                gateName = parseList[0]
+                gateType = parseList[4]
+                gateLoad = 0
+                gateDelay = parseList[-2]
                 # Creating Gate object
                 #print(parseList,parseList[2])
                 #Logic to skip entries extended to two lines
-                if((parseList[2].__contains__('v') or parseList[2].__contains__('^'))):
-                    gateObj = gateBlock()
-                    gateObj.setGateParams(gateName, gateType, float(gateDelay),gateLoad)
-                    #gateObj.setFanoutChar(gateName, fanout)
-                    pathDelay += float(gateDelay)
-                    tempPS.addGateObj(gateObj)
+                #if((parseList[2].__contains__('v') or parseList[2].__contains__('^'))):
+                #    gateObj = gateBlock()
+                #    gateObj.setGateParams(gateName, gateType, float(gateDelay),gateLoad)
+                #    #gateObj.setFanoutChar(gateName, fanout)
+                #    pathDelay += float(gateDelay)
+                #    tempPS.addGateObj(gateObj)
+                gateObj = gateBlock()
+                gateObj.setGateParams(gateName, gateType, float(gateDelay),gateLoad)
+                #gateObj.setFanoutChar(gateName, fanout)
+                pathDelay += float(gateDelay)
+                tempPS.addGateObj(gateObj)
                 idx+=1
                 firstLine = secondLine
                 secondLine = filelineContents[idx]

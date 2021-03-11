@@ -64,10 +64,10 @@ def parseFileLines(filelineContents):
         if(line.__contains__("Startpoint")):
             tempPS = pathSegment()
             line = line.strip("\r\n").split(")")
-            startPoint = re.sub("[^A-Za-z0-9_]", "_",line[1])
+            startPoint = line[1]#re.sub("[^A-Za-z0-9_]", "_",line[1])
         elif(line.__contains__("Endpoint")):
             line = line.strip("\r\n").split(")")
-            endPoint = re.sub("[^A-Za-z0-9_]", "_",line[1])
+            endPoint = line[1]#re.sub("[^A-Za-z0-9_]", "_",line[1])
             #print(line)
         elif(line.__contains__("Load") and line.__contains__("Delay") and line.__contains__("Fanout")):
             idx+=4 # Length 3 buffer, no good inputs.
