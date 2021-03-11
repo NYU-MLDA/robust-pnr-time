@@ -40,6 +40,7 @@ set_db script_search_path $search_path
 #set_db target_library /home/abc586/nangate15nm/NanGate_15nm_OCL_typical_conditional_ccs.lib
 #set_db link_library /home/abc586/nangate15nm/NanGate_15nm_OCL_typical_conditional_ccs.lib
 
+set_db lef_library {/home/abc586/freepdk-45nm/rtk-tech.lef /home/abc586/freepdk-45nm/stdcells.lef}
 set_db target_library /home/abc586/freepdk-45nm/stdcells.lib
 set_db link_library /home/abc586/freepdk-45nm/stdcells.lib
 
@@ -95,4 +96,5 @@ update_names -verilog
 #write_db -all_root_attributes -to_file ${op_file}_2ip.db
 write_hdl -lec > ${RESULTS_DIR}/${TOP_DESIGN}_synthesized.v
 write_sdc ${TOP_DESIGN} > ${RESULTS_DIR}/${TOP_DESIGN}.final.sdc
+write_design -innovus -base_name ${TOP_DESIGN}_genus_xfer
 exit

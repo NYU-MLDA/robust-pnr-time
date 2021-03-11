@@ -1,7 +1,7 @@
 source ./config.tcl
 #set init_mmmc_file "setup-timing.tcl"
 
-set OUT_DIR ./out
+set OUT_DIR ./out_pnr
 # Reports and logs directories creation
 file mkdir ${OUT_DIR}
 set REPORTS_DIR "${OUT_DIR}/rpts"
@@ -15,9 +15,15 @@ file mkdir ${GDS_DIR}
 
 # Initialize
 set_db design_process_node 45
+#setDesignMode -process 45
 set_db init_ground_nets VSS
 set_db init_power_nets VDD
-set setup_file   "../GENUS/${TOP_DESIGN}_genus_xfer.invs_setup.tcl"
+
+#set search_path [get_db script_search_path]
+#lappend search_path "../GENUS/"
+#set_db script_search_path $search_path
+
+set setup_file   "${TOP_DESIGN}_genus_xfer.invs_setup.tcl"
    
 
 source $setup_file
