@@ -1,0 +1,14 @@
+MacroModel pin decoded_imm_j_reg[17]/CK  60.20ps 60.20ps 60.20ps 60.20ps 0pf default_emulate_view
+MacroModel pin latched_stalu_reg/CK  113.70ps 113.70ps 113.70ps 113.70ps 0pf default_emulate_view
+MacroModel pin reg_op2_reg[11]/CK  10.00ps 10.00ps 10.00ps 10.00ps 0pf default_emulate_view
+MacroModel pin decoded_imm_j_reg[18]/CK  60.70ps 60.70ps 60.70ps 60.70ps 0pf default_emulate_view
+MacroModel pin decoded_imm_j_reg[1]/CK  60.60ps 60.60ps 60.60ps 60.60ps 0pf default_emulate_view
+MacroModel pin decoded_imm_j_reg[16]/CK  60.30ps 60.30ps 60.30ps 60.30ps 0pf default_emulate_view
+MacroModel pin decoded_imm_j_reg[15]/CK  56.80ps 56.80ps 56.80ps 56.80ps 0pf default_emulate_view
+MacroModel pin decoded_imm_j_reg[19]/CK  59.60ps 59.60ps 59.60ps 59.60ps 0pf default_emulate_view
+MacroModel pin decoded_imm_j_reg[3]/CK  59.60ps 59.60ps 59.60ps 59.60ps 0pf default_emulate_view
+MacroModel pin decoded_imm_j_reg[4]/CK  59.10ps 59.10ps 59.10ps 59.10ps 0pf default_emulate_view
+MacroModel pin reg_op1_reg[8]/CK  11.50ps 11.50ps 11.50ps 11.50ps 0pf default_emulate_view
+MacroModel pin reg_op1_reg[15]/CK  18.70ps 18.70ps 18.70ps 18.70ps 0pf default_emulate_view
+MacroModel pin reg_op1_reg[5]/CK  23.50ps 23.50ps 23.50ps 23.50ps 0pf default_emulate_view
+MacroModel pin reg_op1_reg[6]/CK  19.40ps 19.40ps 19.40ps 19.40ps 0pf default_emulate_view
