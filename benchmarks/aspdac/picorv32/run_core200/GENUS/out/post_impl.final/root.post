@@ -1,0 +1,21 @@
+::db::check_and_set_root_attr extract_rc_engine pre_route
+::db::check_and_set_root_attr add_fillers_cells {FILLCELL_X4 FILLCELL_X2 FILLCELL_X1}
+::db::check_and_set_root_attr add_fillers_prefix FILL
+::db::check_and_set_root_attr assign_pins_edit_in_batch false
+::db::check_and_set_root_attr delaycal_enable_high_fanout true
+::db::check_and_set_root_attr delaycal_eng_copyNetPropToNewNet true
+::db::check_and_set_root_attr delaycal_ignore_net_load false
+::db::check_and_set_root_attr extract_rc_coupling_cap_threshold 3.0
+::db::check_and_set_root_attr extract_rc_layer_independent 1
+::db::check_and_set_root_attr extract_rc_relative_cap_threshold 0.03
+::db::check_and_set_root_attr extract_rc_total_cap_threshold 5.0
+::db::check_and_set_root_attr opt_drv_margin 0.0
+::db::check_and_set_root_attr opt_fix_drv true
+::db::check_and_set_root_attr opt_preserve_all_sequential false
+::db::check_and_set_root_attr opt_resize_flip_flops true
+::db::check_and_set_root_attr opt_setup_target_slack 0.0
+::db::check_and_set_root_attr opt_useful_skew_eco_route false
+::db::check_and_set_root_attr place_global_reorder_scan false
+::db::check_and_set_root_attr route_design_extract_third_party_compatible false
+::db::check_and_set_root_attr route_design_strict_honor_route_rule false
+::db::check_and_set_root_attr route_early_global_secondary_pg false
