@@ -115,5 +115,5 @@ rm syn_gen_summary.txt
 rm syn_gen_paths.csv
 rm syn_gen_tmp.txt
 #Report timing
-report_timing -max_paths 150000 > ${REPORTS_DIR}/timing.rpt
+report_timing -max_paths 150000 -nworst 6 > ${REPORTS_DIR}/timing.rpt
 exit

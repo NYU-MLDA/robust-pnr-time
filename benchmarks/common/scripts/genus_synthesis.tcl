@@ -74,7 +74,7 @@ set output_ports [all_outputs]
 
 check_design
 syn_gen
-report_timing -max_paths 150000 > ${RESULTS_DIR}/${TOP_DESIGN}_generic_timing.rpt
+report_timing -max_paths 150000 -nworst 6 > ${RESULTS_DIR}/${TOP_DESIGN}_generic_timing.rpt
 
 
 #jg6467 changes start
@@ -88,7 +88,7 @@ close $fl
 
 syn_map
 syn_opt
-report_timing -max_paths 150000 > ${RESULTS_DIR}/${TOP_DESIGN}_techmap_timing.rpt
+report_timing -max_paths 150000 -nworst 6 > ${RESULTS_DIR}/${TOP_DESIGN}_techmap_timing.rpt
 ungroup -flatten -all
 
 update_names -verilog
