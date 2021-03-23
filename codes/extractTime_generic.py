@@ -44,6 +44,7 @@ def parseArguments():
         output_csv = args.output_file
         target_cycle_time = args.target_cycle_time
 
+'''
 def processStartAndEndpoint(startPoint,endPoint):
     #Trim starting '_'
     sPoint = startPoint[1:]
@@ -53,7 +54,12 @@ def processStartAndEndpoint(startPoint,endPoint):
     elif(endPoint.endswith('sena')):
         ePoint = ePoint[:-4] + 'SE'
     return sPoint,ePoint
+'''
 
+def processStartAndEndpoint(startPoint,endPoint):
+    sPoint = startPoint.split('/')[0].strip()
+    ePoint = endPoint.split('/')[0].strip()
+    return sPoint, ePoint
 
 
 def parseFileLines(filelineContents):

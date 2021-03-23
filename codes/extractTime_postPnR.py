@@ -40,6 +40,7 @@ def parseArguments():
         timing_report = args.timing_report
         output_csv = args.output_file
 
+'''
 def processStartAndEndpoint(startPoint,endPoint):
     sPoint = startPoint
     if(startPoint.endswith('Q')):
@@ -47,6 +48,13 @@ def processStartAndEndpoint(startPoint,endPoint):
     elif(startPoint.endswith('QN')):
         sPoint = startPoint[:-2]+'clk'
     return sPoint,endPoint
+'''
+
+def processStartAndEndpoint(startPoint,endPoint):
+    sPoint = startPoint.split('/')[0].strip()
+    ePoint = endPoint.split('/')[0].strip()
+    return sPoint, ePoint
+
 
 def parseFileLines(filelineContents):
     idx = 0

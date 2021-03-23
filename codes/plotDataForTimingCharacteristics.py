@@ -22,15 +22,20 @@ postPnRCSVFile['pkey'] = postPnRCSVFile['startPoint']+","+postPnRCSVFile['endPoi
 
 
 commonKeys = set(prePnRCSVFile['pkey']) & set(postPnRCSVFile['pkey'])
+print(len(prePnRCSVFile['pkey'].unique()),len(postPnRCSVFile['pkey'].unique()))
 
 
 prePnRCSVFile_common = prePnRCSVFile[prePnRCSVFile['pkey'].isin(commonKeys)]
 postPnRCSVFile_common = postPnRCSVFile[postPnRCSVFile['pkey'].isin(commonKeys)]
+prePnRCSVFile_uncommon = prePnRCSVFile[~prePnRCSVFile['pkey'].isin(commonKeys)]
+
+
 
 print(prePnRCSVFile)
 print(postPnRCSVFile)
 print(prePnRCSVFile_common)
 print(postPnRCSVFile_common)
+print(prePnRCSVFile_uncommon)
 final = prePnRCSVFile_common.merge(postPnRCSVFile_common, on="pkey", how = 'inner')
 final["techmapPD"] = final["techmapPD"]*1000
 
@@ -48,8 +53,11 @@ sns.scatterplot(x="genericPD", y="techmapPD",data=final)
 #plt.ylim(0, 1.1)
 #    #plt.xlim(0, 2)
 plt.title("Timing Variation",fontsize=20,weight='bold')
-plt.xlabel("Pre PnR timing",fontsize=20,weight='bold')
-plt.ylabel("Post PnR timing",fontsize=20,weight='bold')
+
+plt.xlabel("Post generic synthesis timing",fontsize=20,weight='bold')
+plt.ylabel("Post techmap timing",fontsize=20,weight='bold')
+
+
 #plt.xticks(rotation=45,fontsize=20,weight='bold')
 #plt.yticks(fontsize=20,weight='bold')
 #ax.legend(prop={'size':18}, loc='bottom right')
