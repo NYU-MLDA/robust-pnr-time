@@ -27,7 +27,7 @@ def showVersion():
     sys.exit()
 
 def parseArguments():
-    global rootDir
+    global rootDir,runNum
     argparser = argparse.ArgumentParser(description="Feature Extraction (Pre PnR synthesis)")
     argparser.add_argument("-V", "--version", action="store_true", dest="showversion", default=False,
                            help="Show the version")
@@ -60,6 +60,8 @@ def createFolder(destFolder,clockPeriod):
     configFile.close()
 
 def createRunsAndGenScript():
+    global templateDir
+    templateDir = os.path.join(rootDir,"template")
     finalRunScript = open(os.path.join(rootDir,"batchRun.sh"),"w+")
     for cp in clockPeriods:
         destFolder = os.path.join(rootDir,'runD'+str(runNum)+"_"+str(cp))
