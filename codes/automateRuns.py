@@ -58,6 +58,9 @@ def createFolder(destFolder,clockPeriod):
     configFile = open(os.path.join(destFolder,'GENUS','config.tcl'),'a+')
     configFile.write("\nset CLOCK_PERIOD "+str(clockPeriod/1000)+"\n")
     configFile.close()
+    runScript = open(os.path.join(destFolder,'GENUS','run.sh'),'w+')
+    runScript.write("\nmake genus\ngrep \"Data Path\" "+os.path.join(destFolder,'GENUS','syn_gen_summary.txt')+" | awk '{print $3}' > "+os.path.join(destFolder,'GENUS','syn_gen_tmp.txt')+"\nmake pnr_jg\n")
+    runScript.close()
 
 def createRunsAndGenScript():
     global templateDir
