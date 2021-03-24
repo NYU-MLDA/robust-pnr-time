@@ -123,5 +123,5 @@ for {set i 0} {$i < [llength $lines1]} {incr i} {puts $fl3 "[lindex $lines1 $i 0
 close $fl3
 
 #Report timing
-report_timing -max_paths 150000 > ${REPORTS_DIR}/timing.rpt
+report_timing -max_paths 150000 -nworst 7 > ${REPORTS_DIR}/timing.rpt
 exit
