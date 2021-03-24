@@ -2,7 +2,7 @@ import sys,os,shutil
 import argparse
 
 ## Timing cycle
-clockPeriods = [350,375,400,450]
+clockPeriods = [400,500,600,700,800]
 
 ##
 #nohup path to run.sh > log file
