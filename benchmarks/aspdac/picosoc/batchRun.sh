@@ -1,0 +1,5 @@
+nohup /home/abc586/currentResearch/robust-pnr-time/benchmarks/aspdac/picosoc/runD2_400/GENUS/run.sh > /home/abc586/currentResearch/robust-pnr-time/benchmarks/aspdac/picosoc/runD2_400/GENUS/log_Fullrun 2>&1 &
+nohup /home/abc586/currentResearch/robust-pnr-time/benchmarks/aspdac/picosoc/runD2_500/GENUS/run.sh > /home/abc586/currentResearch/robust-pnr-time/benchmarks/aspdac/picosoc/runD2_500/GENUS/log_Fullrun 2>&1 &
+nohup /home/abc586/currentResearch/robust-pnr-time/benchmarks/aspdac/picosoc/runD2_600/GENUS/run.sh > /home/abc586/currentResearch/robust-pnr-time/benchmarks/aspdac/picosoc/runD2_600/GENUS/log_Fullrun 2>&1 &
+nohup /home/abc586/currentResearch/robust-pnr-time/benchmarks/aspdac/picosoc/runD2_700/GENUS/run.sh > /home/abc586/currentResearch/robust-pnr-time/benchmarks/aspdac/picosoc/runD2_700/GENUS/log_Fullrun 2>&1 &
+nohup /home/abc586/currentResearch/robust-pnr-time/benchmarks/aspdac/picosoc/runD2_800/GENUS/run.sh > /home/abc586/currentResearch/robust-pnr-time/benchmarks/aspdac/picosoc/runD2_800/GENUS/log_Fullrun 2>&1 &
