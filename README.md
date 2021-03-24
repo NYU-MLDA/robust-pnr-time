@@ -16,4 +16,4 @@
    
    Synthesis: Go the GENUS folder, type "make genus"
    
-   Placement and rounting: Go to CDS folder, type "make pnr".
+   Placement and rounting: Do "make pnr".
