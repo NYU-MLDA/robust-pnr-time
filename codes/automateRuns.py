@@ -53,9 +53,9 @@ def parseArguments():
 
 
 def createFolder(destFolder,clockPeriod):
-    os.mkdir(destFolder)
-    shutil.copy(templateDir,destFolder)
-    configFile = open(os.path.join(destFolder,'GENUS','config.tcl'),'w+')
+    #os.mkdir(destFolder)
+    shutil.copytree(templateDir,destFolder)
+    configFile = open(os.path.join(destFolder,'GENUS','config.tcl'),'a+')
     configFile.write("\nset CLOCK_PERIOD "+str(clockPeriod/1000)+"\n")
     configFile.close()
 
@@ -66,7 +66,7 @@ def createRunsAndGenScript():
     for cp in clockPeriods:
         destFolder = os.path.join(rootDir,'runD'+str(runNum)+"_"+str(cp))
         createFolder(destFolder,cp)
-        nohupCmd = "nohup "+os.path.join(destFolder,'GENUS','run.sh')+" > "+os.path.join(destFolder,'GENUS','log_Fullrun')+"2>&1 &"
+        nohupCmd = "nohup "+os.path.join(destFolder,'GENUS','run.sh')+" > "+os.path.join(destFolder,'GENUS','log_Fullrun')+" 2>&1 &"
         finalRunScript.write(nohupCmd+"\n")
     finalRunScript.close()
 
