@@ -71,7 +71,9 @@ def createRunsAndGenScript():
     for cp in clockPeriods:
         destFolder = os.path.join(rootDir,'runD'+str(runNum)+"_"+str(cp))
         createFolder(destFolder,cp)
+        cwdCommand = "cd "+os.path.join(destFolder,'GENUS')
         nohupCmd = "nohup "+os.path.join(destFolder,'GENUS','run.sh')+" > "+os.path.join(destFolder,'GENUS','log_Fullrun')+" 2>&1 &"
+        finalRunScript.write(cwdCommand+"\n")
         finalRunScript.write(nohupCmd+"\n")
     finalRunScript.close()
 
