@@ -61,7 +61,7 @@ def createFolder(destFolder,clockPeriod):
     runScript = open(os.path.join(destFolder,'GENUS','run.sh'),'w+')
     runScript.write("\nmake genus\ngrep \"Data Path\" "+os.path.join(destFolder,'GENUS','syn_gen_summary.txt')+" | awk '{print $3}' > "+os.path.join(destFolder,'GENUS','syn_gen_tmp.txt')+"\nmake pnr_jg\n")
     runScript.close()
-    os.chmod(os.path.join(destFolder,'GENUS','run.sh'),0755)
+    os.chmod(os.path.join(destFolder,'GENUS','run.sh'),0o755)
 
 
 def createRunsAndGenScript():
