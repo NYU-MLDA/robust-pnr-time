@@ -76,44 +76,44 @@ write_netlist "${RESULTS_DIR}/${TOP_DESIGN}-post-par.v"
 
 #Extract RC parameters file
 
-extract_rc
-write_parasitics -rc_corner default_emulate_rc_corner -spef_file "${RESULTS_DIR}/${TOP_DESIGN}-post-par.spef"
+#extract_rc
+#write_parasitics -rc_corner default_emulate_rc_corner -spef_file "${RESULTS_DIR}/${TOP_DESIGN}-post-par.spef"
 
 #Real Layout file
-write_stream ${OUT_DIR}/${GDS_DIR}/${TOP_DESIGN}-post-par.gds -merge "/home/abc586/freepdk-45nm/stdcells.gds" -map_file "/home/abc586/freepdk-45nm/rtk-stream-out.map"
+#write_stream ${OUT_DIR}/${GDS_DIR}/${TOP_DESIGN}-post-par.gds -merge "/home/abc586/freepdk-45nm/stdcells.gds" -map_file "/home/abc586/freepdk-45nm/rtk-stream-out.map"
 
 write_db out/post_impl.final
 
 #Dump Delay Info
-set fl [open ${REPORTS_DIR}/post_pnr_delay_info.csv w]
-puts $fl "Launch Point, Capturing point, Data Path Delay, Number of cominational cells in data path"
-foreach_in_collection path [report_timing -from [all_register] -to [all_registers] -max_paths 10000 -collection] {
-	set launch [get_db $path .launching_point.name]
-	set capture [get_db $path .capturing_point.name]
-	set sum 0
-	foreach del [get_db $path .timing_points.delay] {set sum [expr $sum + $del]}
-	set depth [expr [llength [lsort -u [get_db $path .timing_points.pin.inst.name]]] - 2]
-	if {$depth < 0} {set depth 0}
-	puts $fl "$launch,$capture,$sum,$depth"
-}
-close $fl
+#set fl [open ${REPORTS_DIR}/post_pnr_delay_info.csv w]
+#puts $fl "Launch Point, Capturing point, Data Path Delay, Number of cominational cells in data path"
+#foreach_in_collection path [report_timing -from [all_register] -to [all_registers] -max_paths 10000 -collection] {
+#	set launch [get_db $path .launching_point.name]
+#	set capture [get_db $path .capturing_point.name]
+#	set sum 0
+#	foreach del [get_db $path .timing_points.delay] {set sum [expr $sum + $del]}
+#	set depth [expr [llength [lsort -u [get_db $path .timing_points.pin.inst.name]]] - 2]
+#	if {$depth < 0} {set depth 0}
+#	puts $fl "$launch,$capture,$sum,$depth"
+#}
+#close $fl
 
-set fl1 [open syn_gen_paths.csv r]
-set lines1 [split [read $fl1] '\n']
-close $fl1
+#set fl1 [open syn_gen_paths.csv r]
+#set lines1 [split [read $fl1] '\n']
+#close $fl1
 
-set fl2 [open syn_gen_tmp.txt r]
-set lines2 [split [read $fl2] '\n']
-close $fl2
+#set fl2 [open syn_gen_tmp.txt r]
+#set lines2 [split [read $fl2] '\n']
+#close $fl2
 
-set fl3 [open ${REPORTS_DIR}/syn_gen_timing_info.csv w]
-puts $fl3 "Launch Point, Capturing point, Data Path Delay, Number of cominational cells in data path"
-for {set i 0} {$i < [llength $lines1]} {incr i} {puts $fl3 "[lindex $lines1 $i 0][lindex $lines1 $i 1][lindex $lines2 $i],[lindex $lines1 $i 2]"}
-close $fl3
+#set fl3 [open ${REPORTS_DIR}/syn_gen_timing_info.csv w]
+#puts $fl3 "Launch Point, Capturing point, Data Path Delay, Number of cominational cells in data path"
+#for {set i 0} {$i < [llength $lines1]} {incr i} {puts $fl3 "[lindex $lines1 $i 0][lindex $lines1 $i 1][lindex $lines2 $i],[lindex $lines1 $i 2]"}
+#close $fl3
 
-rm syn_gen_summary.txt
-rm syn_gen_paths.csv
-rm syn_gen_tmp.txt
+#rm syn_gen_summary.txt
+#rm syn_gen_paths.csv
+#rm syn_gen_tmp.txt
 #Report timing
-report_timing -max_paths 150000 -nworst 6 > ${REPORTS_DIR}/timing.rpt
+report_timing -max_paths 150000 -nworst 3 > ${REPORTS_DIR}/timing.rpt
 exit
