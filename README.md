@@ -16,12 +16,12 @@
    Synthesis: **_make genus_**
    Placement and rounting: **_make pnr_jg_**
    
-8) Run the following scripts to extract timing data:
+8) Run the following scripts to extract timing data (location: codes/dataprocess):
 
    Timing report and input features: **_python3 etGen.py -t ../../benchmarks/aspdac/picosoc/template/GENUS/out/results/picosoc_generic_timing.rpt -d [TargetCT] -o [output data dump folder]_**
    
-   Timing report post techmap: **_python3 etGen.py -t ../../benchmarks/aspdac/picosoc/template/GENUS/out/results/picosoc_techmap_timing.rpt -o [output data dump folder]_**
+   Timing report post techmap: **_python3 etTech.py -t ../../benchmarks/aspdac/picosoc/template/GENUS/out/results/picosoc_techmap_timing.rpt -o [output data dump folder]_**
    
-   Timing report post PnR: **_python3 etGen.py -t ../../benchmarks/aspdac/picosoc/template/GENUS/out_pnr/rpts/timing.rpt -o [output data dump folder]_**
+   Timing report post PnR: **_python3 etpostPnR.py -t ../../benchmarks/aspdac/picosoc/template/GENUS/out_pnr/rpts/timing.rpt -o [output data dump folder]_**
 
    
